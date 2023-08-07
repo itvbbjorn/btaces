@@ -1,5 +1,5 @@
 import React from 'react';
-import { Panel, PanelType, PrimaryButton } from '@fluentui/react';
+import { DefaultButton, Panel, PanelType, PrimaryButton } from '@fluentui/react';
 import { AcesCard } from './cards';
 import { Unit } from './UnitList';
 import MovePhaseDisplay from './MovePhaseDisplay';
@@ -15,9 +15,10 @@ interface UnitPanelProps {
   onDismiss: () => void;
   handleDrawCard: (unit: Unit) => void;
   getAssignedCard: (assignedCardId: string) => AcesCard | undefined;
+  handleDeleteUnit: (unit: Unit) => void; 
 }
 
-const UnitPanel: React.FC<UnitPanelProps> = ({ selectedUnit, isOpen, onDismiss, handleDrawCard, getAssignedCard }) => {
+const UnitPanel: React.FC<UnitPanelProps> = ({ selectedUnit, isOpen, onDismiss, handleDrawCard, getAssignedCard, handleDeleteUnit }) => {
   return (
     <Panel
       isOpen={isOpen}
@@ -33,6 +34,7 @@ const UnitPanel: React.FC<UnitPanelProps> = ({ selectedUnit, isOpen, onDismiss, 
           <MovePhaseDisplay card={getAssignedCard(selectedUnit.AssignedCard) || null} />
           <CombatPhaseDisplay card={getAssignedCard(selectedUnit.AssignedCard) || null} />
           <PrimaryButton onClick={() => handleDrawCard(selectedUnit)}>Draw card</PrimaryButton>
+          <DefaultButton onClick={() => handleDeleteUnit(selectedUnit)}>Delete</DefaultButton>
         </div>
       )}
     </Panel>

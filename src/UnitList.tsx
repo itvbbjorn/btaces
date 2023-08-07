@@ -38,8 +38,9 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
     setShowAddUnit(false);
   };
 
-  const handleRemoveUnit = (index: number) => {
-    setUnits(units.filter((_, idx) => idx !== index));
+  const handleDeleteUnit = (unit: Unit) => {
+    setUnits(units.filter(u => u !== unit));
+    setShowPanel(false); // Close the panel after deletion
   };
 
   const handleUnitClick = (unit: Unit) => {
@@ -120,7 +121,8 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
       isOpen={showPanel} 
       onDismiss={closePanel} 
       handleDrawCard={handleDrawCard} 
-      getAssignedCard={getAssignedCard} 
+      getAssignedCard={getAssignedCard}
+      handleDeleteUnit={handleDeleteUnit}
     />
   </div>
   );
