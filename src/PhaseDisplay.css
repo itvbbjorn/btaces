@@ -1,0 +1,22 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+  }
+  
+  .lightRow {
+    background-color: lightgrey;
+  }
+  .column {
+    flex: 1;
+    padding: 8px;
+  }
+  .blackBox {
+    border: 1px solid black;
+    padding: 5px;
+    background-color: black;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+  }
