@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Dropdown, IDropdownOption, PrimaryButton} from '@fluentui/react';
+import { Dropdown, IDropdownOption, PrimaryButton, Stack, TextField } from '@fluentui/react';
+import './AddUnit.css';
 
 interface Unit {
   Name: string;
@@ -32,22 +33,30 @@ const AddUnit: React.FC<AddUnitProps> = ({ onAddUnit }) => {
     }
   };
 
+  const itemStyles = { root: { padding: 10 } };
+
   return (
     <div>
-      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-      <Dropdown
-        placeholder="Type"
-        options={typeOptions}
-        selectedKey={type?.key}
-        onChange={(_, option) => setType(option)}
-      />
-      {/* <input
-        type="text"
-        placeholder="Assigned Card"
-        value={assignedCard}
-        onChange={(e) => setAssignedCard(e.target.value)}
-      /> */}
-      <PrimaryButton onClick={handleAdd}>Add</PrimaryButton>
+        <Stack horizontal horizontalAlign="start" verticalAlign="center">
+            <Stack.Item grow styles={itemStyles}>
+                <TextField
+                    placeholder="Name"
+                    value={name}
+                    onChange={(_, newValue) => setName(newValue || '')}
+                />
+            </Stack.Item>
+            <Stack.Item grow styles={itemStyles}>
+                <Dropdown
+                    placeholder="Select unit type"
+                    options={typeOptions}
+                    selectedKey={type?.key}
+                    onChange={(_, option) => setType(option)}
+                />
+            </Stack.Item>
+            <Stack.Item align="center">
+                <PrimaryButton onClick={handleAdd}>Add</PrimaryButton>
+            </Stack.Item>
+        </Stack>
     </div>
   );
 };

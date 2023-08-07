@@ -5,6 +5,7 @@ import CombatPhaseDisplay from './CombatPhaseDisplay';
 import GetRandomCard from './GetRandomCard';
 import { AcesCard } from './cards';
 import UnitList from './UnitList'; // Import UnitList component
+import AddUnit from './AddUnit';
 
 function App() {
   const [randomCard, setRandomCard] = useState<AcesCard | null>(null);
@@ -15,7 +16,7 @@ function App() {
       {/* <GetRandomCard onSelect={setRandomCard} />
       <MovePhaseDisplay card={randomCard} />
       <CombatPhaseDisplay card={randomCard} /> */}
-      <UnitList units={units} setUnits={setUnits} /> {/* Use UnitList component */}
+      <UnitList units={units} setUnits={setUnits} /> 
     </div>
   );
 }
