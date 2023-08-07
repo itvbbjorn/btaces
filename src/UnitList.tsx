@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { List, DetailsList, Panel, PanelType, PrimaryButton, DefaultButton, TextField, Stack } from '@fluentui/react';
+import React, { useEffect, useState } from 'react';
+import { DetailsList, IColumn, Panel, Selection, PanelType, PrimaryButton, DefaultButton, SelectionMode, CheckboxVisibility } from '@fluentui/react';
 import AddUnit from './AddUnit';
 import cards, { AcesCard } from './cards';
 import UnitPanel from './UnitPanel';
@@ -14,7 +14,6 @@ interface UnitListProps {
   units: Unit[];
   setUnits: (units: Unit[]) => void;
 }
-
 
 const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   const [showAddUnit, setShowAddUnit] = useState(false);
@@ -42,34 +41,70 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   const getAssignedCard = (assignedCardId: string): AcesCard | undefined => {
     return cards.find(card => card.id === assignedCardId);
   };
+
   const drawCard = (unitType: string): AcesCard | undefined => {
     const filteredCards = cards.filter(card => card.type === unitType);
     const randomIndex = Math.floor(Math.random() * filteredCards.length);
     return filteredCards[randomIndex];
   };
+
   const handleDrawCard = (unit: Unit) => {
     const drawnCard = drawCard(unit.Type);
     if (drawnCard) {
       const updatedUnit = { ...unit, AssignedCard: drawnCard.id };
       setUnits(units.map(u => u === unit ? updatedUnit : u));
-      setSelectedUnit(updatedUnit); 
+      setSelectedUnit(updatedUnit);
     }
   };
+
+  const [selectedItem, setSelectedItem] = useState<Unit | undefined>();
+
+  const selection = new Selection({
+    onSelectionChanged: () => {
+      setSelectedItem(selection.getSelection()[0] as Unit);
+    },
+  });
+
+  useEffect(() => {
+    if (selectedItem) {
+      handleUnitClick(selectedItem);
+    }
+  }, [selectedItem]);
+
+  const columns = [
+    { key: 'Name', name: 'Name', fieldName: 'Name', minWidth: 100, maxWidth: 200 },
+    { key: 'Type', name: 'Type', fieldName: 'Type', minWidth: 100, maxWidth: 200 },
+    { key: 'AssignedCard', name: 'Assigned Card', fieldName: 'AssignedCard', minWidth: 100, maxWidth: 200 },
+    {
+      key: 'action',
+      name: 'Actions',
+      fieldName: 'action',
+      minWidth: 100,
+      maxWidth: 200,
+    },
+  ];
   
+
   return (
     <div>
       <button onClick={() => setShowAddUnit(true)}>Add Unit</button>
       {showAddUnit && <AddUnit onAddUnit={handleAddUnit} />}
-      <List
+      <DetailsList
         items={units}
-        onRenderCell={(unit, index) => (
-          <div key={index} onClick={() => handleUnitClick(unit as Unit)}>
-            <span>Name: {unit?.Name}, Type: {unit?.Type}, Assigned Card: {unit?.AssignedCard}</span>
-            <DefaultButton color="red" onClick={(e) => { e.stopPropagation(); handleRemoveUnit(index as number); }}>Remove</DefaultButton>
-          </div>
-        )}
-        
+        columns={columns}
+        selectionMode={SelectionMode.none}
+        onRenderRow={(props, defaultRender) => {
+          if (props) {
+            return (
+              <div onClick={() => handleUnitClick(props.item as Unit)}>
+                {defaultRender?.(props)}
+              </div>
+            );
+          }
+          return null;
+        }}
       />
+
       <UnitPanel 
         selectedUnit={selectedUnit} 
         isOpen={showPanel} 
