@@ -6,17 +6,16 @@ import GetRandomCard from './GetRandomCard';
 import { AcesCard } from './cards';
 import UnitList from './UnitList'; // Import UnitList component
 import AddUnit from './AddUnit';
+import { DetailsList, SelectionMode } from '@fluentui/react';
 
 function App() {
   const [randomCard, setRandomCard] = useState<AcesCard | null>(null);
   const [units, setUnits] = useState<Array<{ Name: string; Type: string; AssignedCard: string }>>([]);
-
+  const [showAddUnit, setShowAddUnit] = useState(false);
+  
   return (
     <div className="App">
-      {/* <GetRandomCard onSelect={setRandomCard} />
-      <MovePhaseDisplay card={randomCard} />
-      <CombatPhaseDisplay card={randomCard} /> */}
-      <UnitList units={units} setUnits={setUnits} /> 
+      <UnitList units={units} setUnits={setUnits} />
     </div>
   );
 }

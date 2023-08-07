@@ -3,6 +3,7 @@ import { DetailsList, IColumn, Panel, Selection, PanelType, PrimaryButton, Defau
 import AddUnit from './AddUnit';
 import cards, { AcesCard } from './cards';
 import UnitPanel from './UnitPanel';
+import AddUnitRow from './AddUnitRow';
 
 export interface Unit {
   Name: string;
@@ -19,6 +20,18 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   const [showAddUnit, setShowAddUnit] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [showPanel, setShowPanel] = useState(false);
+  const [showAddUnitRow, setShowAddUnitRow] = useState(false);
+
+
+  const handleSaveNewUnit = (unit: Unit) => {
+    setUnits([...units, unit]);
+    setShowAddUnitRow(false); // Hide the AddUnitRow after saving
+  };
+  
+  const handleShowAddUnitRow = () => {
+    setShowAddUnitRow(true); // Show the AddUnitRow when requested
+  };
+  
 
   const handleAddUnit = (unit: Unit) => {
     setUnits([...units, unit]);
@@ -72,22 +85,13 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   }, [selectedItem]);
 
   const columns = [
-    { key: 'Name', name: 'Name', fieldName: 'Name', minWidth: 100, maxWidth: 200 },
-    { key: 'Type', name: 'Type', fieldName: 'Type', minWidth: 100, maxWidth: 200 },
-    { key: 'AssignedCard', name: 'Assigned Card', fieldName: 'AssignedCard', minWidth: 100, maxWidth: 200 },
-    {
-      key: 'action',
-      name: 'Actions',
-      fieldName: 'action',
-      minWidth: 100,
-      maxWidth: 200,
-    },
+    { key: 'Name', name: 'Name', fieldName: 'Name', minWidth: 50, maxWidth: 100 },
+    { key: 'Type', name: 'Type', fieldName: 'Type', minWidth: 50, maxWidth: 50 },
+    { key: 'AssignedCard', name: 'Assigned Card', fieldName: 'AssignedCard', minWidth: 20, maxWidth: 40 },
   ];
   
-
   return (
     <div>
-      <button onClick={() => setShowAddUnit(true)}>Add Unit</button>
       {showAddUnit && <AddUnit onAddUnit={handleAddUnit} />}
       <DetailsList
         items={units}
@@ -104,15 +108,21 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
           return null;
         }}
       />
+      {/* Conditionally render the AddUnitRow component */}
+    {showAddUnitRow ? (
+      <AddUnitRow onSave={handleSaveNewUnit} />
+    ) : (
+      <PrimaryButton onClick={handleShowAddUnitRow}>Add new</PrimaryButton>
+    )}
 
-      <UnitPanel 
-        selectedUnit={selectedUnit} 
-        isOpen={showPanel} 
-        onDismiss={closePanel} 
-        handleDrawCard={handleDrawCard} 
-        getAssignedCard={getAssignedCard} 
-      />
-    </div>
+    <UnitPanel 
+      selectedUnit={selectedUnit} 
+      isOpen={showPanel} 
+      onDismiss={closePanel} 
+      handleDrawCard={handleDrawCard} 
+      getAssignedCard={getAssignedCard} 
+    />
+  </div>
   );
 };
 
