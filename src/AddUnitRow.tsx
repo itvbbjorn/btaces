@@ -8,8 +8,11 @@ interface AddUnitRowProps {
 }
 
 const typeOptions: IDropdownOption[] = [
-  { key: 'Striker', text: 'Striker' },
-  { key: 'Brawler', text: 'Brawler' },
+  { key: "Skirmisher", text: "Skirmisher" },
+  { key: "Brawler", text: "Brawler" },
+  { key: "Sniper", text: "Sniper" },
+  { key: "Striker", text: "Striker" },
+
 ];
 
 const AddUnitRow: React.FC<AddUnitRowProps> = ({ onSave }) => {
