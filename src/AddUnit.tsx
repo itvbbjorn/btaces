@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown, IDropdownOption } from '@fluentui/react';
+import { Dropdown, IDropdownOption, PrimaryButton} from '@fluentui/react';
 
 interface Unit {
   Name: string;
@@ -41,13 +41,13 @@ const AddUnit: React.FC<AddUnitProps> = ({ onAddUnit }) => {
         selectedKey={type?.key}
         onChange={(_, option) => setType(option)}
       />
-      <input
+      {/* <input
         type="text"
         placeholder="Assigned Card"
         value={assignedCard}
         onChange={(e) => setAssignedCard(e.target.value)}
-      />
-      <button onClick={handleAdd}>Add</button>
+      /> */}
+      <PrimaryButton onClick={handleAdd}>Add</PrimaryButton>
     </div>
   );
 };

@@ -12,9 +12,9 @@ function App() {
 
   return (
     <div className="App">
-      <GetRandomCard onSelect={setRandomCard} />
+      {/* <GetRandomCard onSelect={setRandomCard} />
       <MovePhaseDisplay card={randomCard} />
-      <CombatPhaseDisplay card={randomCard} />
+      <CombatPhaseDisplay card={randomCard} /> */}
       <UnitList units={units} setUnits={setUnits} /> {/* Use UnitList component */}
     </div>
   );
