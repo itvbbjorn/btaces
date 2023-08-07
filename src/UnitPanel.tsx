@@ -1,5 +1,5 @@
 import React from 'react';
-import { DefaultButton, Panel, PanelType, PrimaryButton } from '@fluentui/react';
+import { DefaultButton, Panel, PanelType, PrimaryButton, Stack} from '@fluentui/react';
 import { AcesCard } from './cards';
 import { Unit } from './UnitList';
 import MovePhaseDisplay from './MovePhaseDisplay';
@@ -25,16 +25,23 @@ const UnitPanel: React.FC<UnitPanelProps> = ({ selectedUnit, isOpen, onDismiss, 
       onDismiss={onDismiss}
       type={PanelType.smallFixedFar}
       headerText="Unit Details"
+      isLightDismiss
     >
       {selectedUnit && (
         <div>
-          <p>Name: {selectedUnit.Name}</p>
-          <p>Type: {selectedUnit.Type}</p>
-          <p>Assigned Card:</p>
-          <MovePhaseDisplay card={getAssignedCard(selectedUnit.AssignedCard) || null} />
-          <CombatPhaseDisplay card={getAssignedCard(selectedUnit.AssignedCard) || null} />
-          <PrimaryButton onClick={() => handleDrawCard(selectedUnit)}>Draw card</PrimaryButton>
-          <DefaultButton onClick={() => handleDeleteUnit(selectedUnit)}>Delete</DefaultButton>
+            <p>Name: {selectedUnit.Name}</p>
+            <p>Type: {selectedUnit.Type}</p>
+            <p>Assigned Card:</p>
+            <MovePhaseDisplay card={getAssignedCard(selectedUnit.AssignedCard) || null} />
+            <CombatPhaseDisplay card={getAssignedCard(selectedUnit.AssignedCard) || null} />
+            <Stack horizontal>
+                <Stack.Item styles={{ root: { padding: 10 } }}>
+                    <PrimaryButton onClick={() => handleDrawCard(selectedUnit)}>Draw card</PrimaryButton>
+                </Stack.Item>
+                <Stack.Item styles={{ root: { padding: 10 } }}>
+                    <DefaultButton onClick={() => handleDeleteUnit(selectedUnit)}>Delete</DefaultButton>
+                </Stack.Item>
+            </Stack>
         </div>
       )}
     </Panel>

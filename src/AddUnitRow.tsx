@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DetailsList, IColumn, TextField, Dropdown, PrimaryButton, IDropdownOption, Stack } from '@fluentui/react';
+import { TextField, Dropdown, PrimaryButton, IDropdownOption, Stack } from '@fluentui/react';
 import { Unit } from './UnitList';
 import './AddUnit.css'
 

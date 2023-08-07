@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DetailsList, IColumn, Panel, Selection, PanelType, PrimaryButton, DefaultButton, SelectionMode, CheckboxVisibility } from '@fluentui/react';
+import { DetailsList, Selection, PrimaryButton, SelectionMode } from '@fluentui/react';
 import AddUnit from './AddUnit';
 import cards, { AcesCard } from './cards';
 import UnitPanel from './UnitPanel';
