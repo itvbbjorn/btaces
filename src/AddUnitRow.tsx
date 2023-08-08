@@ -23,7 +23,7 @@ const AddUnitRow: React.FC<AddUnitRowProps> = ({ onSave, onCancel }) => {
 
   const handleSave = () => {
     if (name && type) {
-      onSave({ Name: name, Type: type.text, Initiative: assignedCard });
+      onSave({ Name: name, Type: type.text, Initiative: assignedCard, moveDone: false, combatDone: false });
       setName('');
       setType(undefined);
       setAssignedCard('');

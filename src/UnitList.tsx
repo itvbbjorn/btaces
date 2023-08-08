@@ -9,6 +9,8 @@ export interface Unit {
   Name: string;
   Type: string;
   Initiative: string;
+  moveDone: boolean;
+  combatDone: boolean;
 }
 
 interface UnitListProps {
@@ -116,7 +118,12 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
     { key: 'Name', name: 'Name', fieldName: 'Name', minWidth: 50, maxWidth: 100 },
     { key: 'Type', name: 'Type', fieldName: 'Type', minWidth: 50, maxWidth: 50 },
     { key: 'Initiative', name: 'Initiative', fieldName: 'Initiative', minWidth: 20, maxWidth: 40 },
-  ];
+    { key: 'moveDone', name: 'Move Done', fieldName: 'moveDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.moveDone ? 'Yes' : 'No' },
+    { key: 'combatDone', name: 'Combat Done', fieldName: 'combatDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.combatDone ? 'Yes' : 'No' },
+];
+
+  
+  
   
   return (
     <div>

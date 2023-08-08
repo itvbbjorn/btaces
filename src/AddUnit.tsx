@@ -6,6 +6,8 @@ interface Unit {
   Name: string;
   Type: string;
   Initiative: string;
+  moveDone: boolean;
+  combatDone: boolean;
 }
 
 interface AddUnitProps {
@@ -24,7 +26,7 @@ const AddUnit: React.FC<AddUnitProps> = ({ onAddUnit }) => {
 
   const handleAdd = () => {
     if (name && type) {
-      onAddUnit({ Name: name, Type: type.text, Initiative: assignedCard });
+      onAddUnit({ Name: name, Type: type.text, Initiative: assignedCard, moveDone: false, combatDone: false });
       setName('');
       setType(undefined);
       setAssignedCard('');

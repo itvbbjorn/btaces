@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
-import UnitList from './UnitList'; 
+import UnitList, { Unit } from './UnitList'; // Import the Unit type
 
 function App() {
-  const [units, setUnits] = useState<Array<{ Name: string; Type: string; Initiative: string }>>([]);
+  // Define units using the Unit type
+  const [units, setUnits] = useState<Unit[]>([]);
   
   return (
     <div className="App">

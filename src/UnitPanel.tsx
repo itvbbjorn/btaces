@@ -14,6 +14,8 @@ interface UnitPanelProps {
         Name: string;
         Type: string;
         Initiative: string;
+        moveDone: boolean;
+        combatDone: boolean;
     } | null;
     isOpen: boolean;
     onDismiss: () => void;
@@ -47,7 +49,7 @@ interface UnitPanelProps {
   
     const isPrevDisabled = unitIndex === 0; // Disable if first unit
     const isNextDisabled = unitIndex === units.length - 1; // Disable if last unit
-    
+
     const handleNextUnit = () => {
         const nextIndex = (unitIndex + 1) % units.length;
         setSelectedUnit(units[nextIndex]);
