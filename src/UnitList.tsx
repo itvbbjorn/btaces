@@ -29,11 +29,11 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
     setUnits([...units, unit]);
     setShowAddUnitRow(false); // Hide the AddUnitRow after saving
   };
-  
+
   const handleShowAddUnitRow = () => {
     setShowAddUnitRow(true); // Show the AddUnitRow when requested
   };
-  
+
   const handleHideAddUnitRow = () => {
     setShowAddUnitRow(false); // Hide AddUnitRow
   }
@@ -62,14 +62,14 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   };
 
   const sortedUnits = units
-  .map(unit => ({
-    unit,
-    assignedCard: getAssignedCard(unit.Initiative)
-  }))
-  .sort((a, b) => {
-    return (a.assignedCard?.id || '').localeCompare(b.assignedCard?.id || '');
-  })
-  .map(item => item.unit); // Extract just the sorted units
+    .map(unit => ({
+      unit,
+      assignedCard: getAssignedCard(unit.Initiative)
+    }))
+    .sort((a, b) => {
+      return (a.assignedCard?.id || '').localeCompare(b.assignedCard?.id || '');
+    })
+    .map(item => item.unit); // Extract just the sorted units
 
 
   const drawCard = (unitType: string): AcesCard | undefined => {
@@ -81,10 +81,11 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   const handleDrawCard = (unit: Unit) => {
     const drawnCard = drawCard(unit.Type);
     if (drawnCard) {
-      const updatedUnit = { ...unit,
-          Initiative: drawnCard.id,
-          moveDone: false,
-          combatDone: false 
+      const updatedUnit = {
+        ...unit,
+        Initiative: drawnCard.id,
+        moveDone: false,
+        combatDone: false
       };
       setUnits(units.map(u => u === unit ? updatedUnit : u));
       setSelectedUnit(updatedUnit);
@@ -94,19 +95,19 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
     const updatedUnits = units.map(unit => {
       const drawnCard = drawCard(unit.Type);
       if (drawnCard) {
-        return { 
-          ...unit, 
-          Initiative: drawnCard.id ,
+        return {
+          ...unit,
+          Initiative: drawnCard.id,
           moveDone: false,
           combatDone: false
         };
       }
       return unit; // return unit unchanged if no card drawn
     });
-  
+
     setUnits(updatedUnits);
   };
-  
+
   const updateUnit = (unit: Unit) => {
     setUnits(units.map(u => u === selectedUnit ? unit : u));
   };
@@ -126,16 +127,16 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   }, [selectedItem]);
 
   const columns = [
-      { key: 'Name', name: 'Name', fieldName: 'Name', minWidth: 50, maxWidth: 100 },
-      { key: 'Type', name: 'Type', fieldName: 'Type', minWidth: 50, maxWidth: 50 },
-      { key: 'Initiative', name: 'Initiative', fieldName: 'Initiative', minWidth: 20, maxWidth: 40 },
-      { key: 'moveDone', name: 'Move Done', fieldName: 'moveDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.moveDone ? <Icon iconName="CheckMark" /> : '-' },
-      { key: 'combatDone', name: 'Combat Done', fieldName: 'combatDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.combatDone ? <Icon iconName="CheckMark" /> : '-' },
+    { key: 'Name', name: 'Name', fieldName: 'Name', minWidth: 50, maxWidth: 100 },
+    { key: 'Type', name: 'Type', fieldName: 'Type', minWidth: 50, maxWidth: 50 },
+    { key: 'Initiative', name: 'Initiative', fieldName: 'Initiative', minWidth: 20, maxWidth: 40 },
+    { key: 'moveDone', name: 'Move Done', fieldName: 'moveDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.moveDone ? <Icon iconName="CheckMark" /> : '-' },
+    { key: 'combatDone', name: 'Combat Done', fieldName: 'combatDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.combatDone ? <Icon iconName="CheckMark" /> : '-' },
   ];
 
-  
-  
-  
+
+
+
   return (
     <div>
       {showAddUnit && <AddUnit onAddUnit={handleAddUnit} />}
@@ -155,30 +156,30 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
         }}
       />
       {/* Conditionally render the AddUnitRow component */}
-    {showAddUnitRow ? (
-      <AddUnitRow 
-      onSave={handleSaveNewUnit} 
-      onCancel={handleHideAddUnitRow}
+      {showAddUnitRow ? (
+        <AddUnitRow
+          onSave={handleSaveNewUnit}
+          onCancel={handleHideAddUnitRow}
+        />
+      ) : (
+        <Stack horizontal>
+          <PrimaryButton disabled={units.length < 1} styles={{ root: { marginLeft: 8, marginRight: 8, marginTop: 10 } }} onClick={handleRandomizeAllCards}>Draw cards</PrimaryButton>
+          <DefaultButton styles={{ root: { marginRight: 8, marginTop: 10 } }} onClick={handleShowAddUnitRow}>Add unit</DefaultButton>
+        </Stack>
+      )}
+      <UnitPanel
+        units={sortedUnits}
+        unitIndex={selectedUnit ? sortedUnits.indexOf(selectedUnit) : -1}
+        setSelectedUnit={setSelectedUnit}
+        selectedUnit={selectedUnit}
+        isOpen={showPanel}
+        onDismiss={closePanel}
+        handleDrawCard={handleDrawCard}
+        getAssignedCard={getAssignedCard}
+        handleDeleteUnit={handleDeleteUnit}
+        updateUnit={updateUnit}
       />
-    ) : (
-      <Stack horizontal>
-        <PrimaryButton disabled={units.length<1} styles={{root: {marginLeft: 8, marginRight: 8, marginTop: 10}}} onClick={handleRandomizeAllCards}>Draw cards</PrimaryButton>
-        <DefaultButton styles={{root: {marginRight: 8, marginTop: 10}}} onClick={handleShowAddUnitRow}>Add unit</DefaultButton>
-      </Stack>
-    )}
-    <UnitPanel 
-      units={sortedUnits}
-      unitIndex={selectedUnit ? sortedUnits.indexOf(selectedUnit) : -1}
-      setSelectedUnit={setSelectedUnit}
-      selectedUnit={selectedUnit} 
-      isOpen={showPanel} 
-      onDismiss={closePanel} 
-      handleDrawCard={handleDrawCard} 
-      getAssignedCard={getAssignedCard}
-      handleDeleteUnit={handleDeleteUnit}
-      updateUnit={updateUnit}
-    />
-  </div>
+    </div>
   );
 };
 

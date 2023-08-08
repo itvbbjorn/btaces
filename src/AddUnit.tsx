@@ -31,7 +31,7 @@ const AddUnit: React.FC<AddUnitProps> = ({ onAddUnit }) => {
       setType(undefined);
       setAssignedCard('');
     } else {
-        console.log("Fill in all fields");
+      console.log("Fill in all fields");
     }
   };
 
@@ -39,26 +39,26 @@ const AddUnit: React.FC<AddUnitProps> = ({ onAddUnit }) => {
 
   return (
     <div>
-        <Stack horizontal horizontalAlign="start" verticalAlign="center">
-            <Stack.Item grow styles={itemStyles}>
-                <TextField
-                    placeholder="Name"
-                    value={name}
-                    onChange={(_, newValue) => setName(newValue || '')}
-                />
-            </Stack.Item>
-            <Stack.Item grow styles={itemStyles}>
-                <Dropdown
-                    placeholder="Select unit type"
-                    options={typeOptions}
-                    selectedKey={type?.key}
-                    onChange={(_, option) => setType(option)}
-                />
-            </Stack.Item>
-            <Stack.Item align="center">
-                <PrimaryButton onClick={handleAdd}>Add</PrimaryButton>
-            </Stack.Item>
-        </Stack>
+      <Stack horizontal horizontalAlign="start" verticalAlign="center">
+        <Stack.Item grow styles={itemStyles}>
+          <TextField
+            placeholder="Name"
+            value={name}
+            onChange={(_, newValue) => setName(newValue || '')}
+          />
+        </Stack.Item>
+        <Stack.Item grow styles={itemStyles}>
+          <Dropdown
+            placeholder="Select unit type"
+            options={typeOptions}
+            selectedKey={type?.key}
+            onChange={(_, option) => setType(option)}
+          />
+        </Stack.Item>
+        <Stack.Item align="center">
+          <PrimaryButton onClick={handleAdd}>Add</PrimaryButton>
+        </Stack.Item>
+      </Stack>
     </div>
   );
 };

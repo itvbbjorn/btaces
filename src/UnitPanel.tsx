@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { DefaultButton, Panel, PanelType, PrimaryButton, Stack, Dialog, DialogType, Icon} from '@fluentui/react';
+import { DefaultButton, Panel, PanelType, PrimaryButton, Stack, Dialog, DialogType, Icon } from '@fluentui/react';
 import { AcesCard } from './cards';
 import { Unit } from './UnitList';
 import MovePhaseDisplay from './MovePhaseDisplay';
@@ -26,29 +26,29 @@ interface UnitPanelProps {
     unitIndex: number;
     setSelectedUnit: (unit: Unit | null) => void;
     updateUnit: (unit: Unit) => void;
-  }
+}
 
-  const UnitPanel: React.FC<UnitPanelProps> = ({
-        units,
-        unitIndex,
-        setSelectedUnit,
-        selectedUnit,
-        isOpen,
-        onDismiss,
-        handleDrawCard,
-        getAssignedCard,
-        handleDeleteUnit,
-        updateUnit,
-    }) => {
+const UnitPanel: React.FC<UnitPanelProps> = ({
+    units,
+    unitIndex,
+    setSelectedUnit,
+    selectedUnit,
+    isOpen,
+    onDismiss,
+    handleDrawCard,
+    getAssignedCard,
+    handleDeleteUnit,
+    updateUnit,
+}) => {
     const [isDeleteDialogVisible, setIsDeleteDialogVisible] = React.useState<boolean>(false);
-  
+
     const onDeleteConfirmation = React.useCallback(() => {
         if (selectedUnit) {
             handleDeleteUnit(selectedUnit);
             setIsDeleteDialogVisible(false);
         }
     }, [selectedUnit, handleDeleteUnit]);
-  
+
     const isPrevDisabled = unitIndex === 0; // Disable if first unit
     const isNextDisabled = unitIndex === units.length - 1; // Disable if last unit
 
@@ -56,37 +56,48 @@ interface UnitPanelProps {
         const nextIndex = (unitIndex + 1) % units.length;
         setSelectedUnit(units[nextIndex]);
     };
-    
-      const handlePreviousUnit = () => {
+
+    const handlePreviousUnit = () => {
         const prevIndex = (unitIndex - 1 + units.length) % units.length;
         setSelectedUnit(units[prevIndex]);
     };
     const handleCompleteMove = () => {
         if (selectedUnit) {
-          const updatedUnit = {
-            ...selectedUnit,
-            moveDone: true,
-          };
-          setSelectedUnit(updatedUnit);
-          updateUnit(updatedUnit);
+            const updatedUnit = {
+                ...selectedUnit,
+                moveDone: true,
+            };
+            setSelectedUnit(updatedUnit);
+            updateUnit(updatedUnit);
         }
-      };
-      
-      const handleCompleteCombat = () => {
+    };
+
+    const handleCompleteCombat = () => {
         if (selectedUnit) {
-          const updatedUnit = {
-            ...selectedUnit,
-            combatDone: true,
-          };
-          setSelectedUnit(updatedUnit);
-          updateUnit(updatedUnit);
+            const updatedUnit = {
+                ...selectedUnit,
+                combatDone: true,
+            };
+            setSelectedUnit(updatedUnit);
+            updateUnit(updatedUnit);
         }
-      };
+    };
 
     const onRenderFooterContent = React.useCallback(
         () => (
             <Stack>
                 <div className='footer-content'>
+                    {selectedUnit && !selectedUnit.moveDone && (
+                        <PrimaryButton onClick={handleCompleteMove} text="Complete Move" />
+                    )}
+
+                    {selectedUnit && selectedUnit.moveDone && !selectedUnit.combatDone && (
+                        <PrimaryButton onClick={handleCompleteCombat} text="Complete Combat" />
+                    )}
+
+                    {selectedUnit && selectedUnit.moveDone && selectedUnit.combatDone && (
+                        <DefaultButton disabled text='Turn Complete' />
+                    )}
                     <div className='util-buttons'>
                         <DefaultButton styles={{ root: { marginRight: 8 } }} onClick={() => selectedUnit && handleDrawCard(selectedUnit)}>New card</DefaultButton>
                         <DefaultButton styles={{ root: { marginRight: 8 } }} onClick={onDismiss}>Close</DefaultButton>
@@ -102,69 +113,55 @@ interface UnitPanelProps {
         [selectedUnit, onDismiss, handleDrawCard, isNextDisabled, handlePreviousUnit, handleNextUnit],
     );
 
-    
-    
     // Draw a card if the selected unit doesn't have one yet.
     useEffect(() => {
         if (selectedUnit && !getAssignedCard(selectedUnit.Initiative)) {
-          handleDrawCard(selectedUnit);
+            handleDrawCard(selectedUnit);
         }
-      }, [selectedUnit, getAssignedCard, handleDrawCard]);
+    }, [selectedUnit, getAssignedCard, handleDrawCard]);
 
     return (
         <Panel
-        isOpen={isOpen}
-        onDismiss={onDismiss}
-        type={PanelType.smallFixedFar}
-        headerText={selectedUnit?.Name}
-        isLightDismiss
-        hasCloseButton={false}
-        onRenderFooterContent={onRenderFooterContent}
-        isFooterAtBottom={true}
-        onRenderHeader={() => (
-            <div className='header-content'>
-              <h2>{selectedUnit?.Name}</h2>
-            </div>
-          )}
-        >
-        <div className='panel-content'>
-            {selectedUnit && (
-                <div>
-                    <div className='unit-details'>
-                        <div>
-                            <p>{selectedUnit.Type} - {getAssignedCard(selectedUnit.Initiative)?.sequence}/8</p>
-                            <p className="movement-phase-text">Movement Phase</p>
-                        </div>
-                        <div className="initiative-box">{selectedUnit.Initiative}</div>
-                    </div>
-                    
-                    <Stack tokens={{childrenGap: 15}}> 
-                        <div className="movement-phase-display" style={{ position: 'relative' }}>
-                            {selectedUnit?.moveDone && <div className="overlay"></div>}
-                            <MovePhaseDisplay card={getAssignedCard(selectedUnit?.Initiative) || null} />
-                        </div>
-
-                        <div className="combat-phase-display" style={{ position: 'relative' }}>
-                            {selectedUnit?.combatDone && <div className="overlay"></div>}
-                            <CombatPhaseDisplay card={getAssignedCard(selectedUnit?.Initiative) || null} />
-                            <br/>
-                        </div>
-                        {selectedUnit && !selectedUnit.moveDone && (
-                            <PrimaryButton onClick={handleCompleteMove} text="Complete Move" />
-                        )}
-
-                        {selectedUnit && selectedUnit.moveDone && !selectedUnit.combatDone && (
-                            <PrimaryButton onClick={handleCompleteCombat} text="Complete Combat" />
-                        )}
-
-                        {selectedUnit && selectedUnit.moveDone && selectedUnit.combatDone && (
-                            <DefaultButton disabled text='Turn Complete' />
-                        )}
-                    </Stack>
+            isOpen={isOpen}
+            onDismiss={onDismiss}
+            type={PanelType.smallFixedFar}
+            headerText={selectedUnit?.Name}
+            isLightDismiss
+            hasCloseButton={false}
+            onRenderFooterContent={onRenderFooterContent}
+            isFooterAtBottom={true}
+            onRenderHeader={() => (
+                <div className='header-content'>
+                    <h2>{selectedUnit?.Name}</h2>
                 </div>
             )}
-        </div>
-        
+        >
+            <div className='panel-content'>
+                {selectedUnit && (
+                    <div>
+                        <div className='unit-details'>
+                            <div>
+                                <p>{selectedUnit.Type} - {getAssignedCard(selectedUnit.Initiative)?.sequence}/8</p>
+                                <p className="movement-phase-text">Movement Phase</p>
+                            </div>
+                            <div className="initiative-box">{selectedUnit.Initiative}</div>
+                        </div>
+                        <Stack tokens={{ childrenGap: 15 }}>
+                            <div className="movement-phase-display" style={{ position: 'relative' }}>
+                                {selectedUnit?.moveDone && <div className="overlay"></div>}
+                                <MovePhaseDisplay card={getAssignedCard(selectedUnit?.Initiative) || null} />
+                            </div>
+
+                            <div className="combat-phase-display" style={{ position: 'relative' }}>
+                                {selectedUnit?.combatDone && <div className="overlay"></div>}
+                                <CombatPhaseDisplay card={getAssignedCard(selectedUnit?.Initiative) || null} />
+                                <br />
+                            </div>
+                        </Stack>
+                    </div>
+                )}
+            </div>
+
             <Dialog
                 hidden={!isDeleteDialogVisible}
                 onDismiss={() => setIsDeleteDialogVisible(false)}

@@ -1,62 +1,69 @@
 .combat-phase-display {
-    border-radius: 5px;
-    background-color: rgb(243, 236, 222);
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  .unit-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-bottom: 10px;
-  }
-  
-  .initiative-box {
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 32px;
-    font-weight: bolder;
-  }
-  .movement-phase-text {
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 15px;
-  }
-  
-  /* Parent container for your panel content */
-  .panel-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Full height of the container */
-  }
-  
-  .footer-content {
-    margin-top: auto; /* Push it to the bottom */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-  .header-content {
-    padding-left: 25px;
-  }
-  
-  .navigation-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 98%;
-    margin-top: 20px;
-  }
-  .util-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 98%;
-    margin-top: 20px;
-  }
-  
-  p {
-    margin: 0;
-    padding-right: 10px;
-  }
-  
+	border-radius: 5px;
+	background-color: rgb(243, 236, 222);
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.unit-details {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding-bottom: 10px;
+}
+
+.initiative-box {
+	background-color: black;
+	color: white;
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 32px;
+	font-weight: bolder;
+}
+
+.movement-phase-text {
+	font-size: 20px;
+	font-weight: bold;
+	padding-top: 15px;
+}
+
+/* Parent container for your panel content */
+.panel-content {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	/* Full height of the container */
+}
+
+.footer-content {
+	margin-top: auto;
+	/* Push it to the bottom */
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.header-content {
+	padding-left: 23px;
+	font-size: 24px;
+	font-weight: bolder;
+}
+
+.navigation-buttons {
+	display: flex;
+	justify-content: space-between;
+	width: 98%;
+	margin-top: 20px;
+}
+
+.util-buttons {
+	display: flex;
+	justify-content: space-between;
+	width: 98%;
+	margin-top: 20px;
+}
+
+p {
+	margin: 0;
+	padding-right: 10px;
+}
