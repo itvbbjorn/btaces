@@ -23,7 +23,7 @@ const cards: Array<AcesCard> = [
         type: "Brawler",
         sequence: 1,
         movePhase: {
-            first: "If first: JUMP to 24” from all enemies, and woods/cover from most enemies",
+            first: "JUMP to 24” from all enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. JUMP into woods/cover from most enemies",
                 "2. JUMP toward lowest TMM enemy",
@@ -62,7 +62,7 @@ const cards: Array<AcesCard> = [
         type: "Brawler",
         sequence: 2,
         movePhase: {
-            first: "If first: JUMP to 16” from all enemies, and woods/cover from most enemies",
+            first: "JUMP to 16” from all enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. GROUND into woods/cover from most enemies",
                 "2. GROUND toward highest health enemy",
@@ -106,7 +106,7 @@ const cards: Array<AcesCard> = [
         type: "Brawler",
         sequence: 3,
         movePhase: {
-            first: "If first: JUMP to 24” from all enemies, and no LOS or most cover.",
+            first: "JUMP to 24” from all enemies, and no LOS or most cover.",
             moveActions: [
                 "1. GROUND If lowest health enemy is further than 24”, toward lowest health enemy",
                 "2. JUMP toward fewest enemies in LOS (min.1)",
@@ -145,7 +145,7 @@ const cards: Array<AcesCard> = [
         type: "Brawler",
         sequence: 4,
         movePhase: {
-            first: "If first: JUMP to 16” from nearest enemy, and no enemies in LOS or woods/cover from most enemies.",
+            first: "JUMP to 16” from nearest enemy, and no enemies in LOS or woods/cover from most enemies.",
             moveActions: [
                 "1. JUMP into woods/cover from most enemies",
                 "2. JUMP toward highest health enemy",
@@ -189,7 +189,7 @@ const cards: Array<AcesCard> = [
         type: "Brawler",
         sequence: 5,
         movePhase: {
-            first: "If first: JUMP to 12” from nearest enemy, and no enemies in LOS or woods/cover from most enemies.",
+            first: "JUMP to 12” from nearest enemy, and no enemies in LOS or woods/cover from most enemies.",
             moveActions: [
                 "1. GROUND toward highest health enemy",
                 "2. GROUND toward biggest threat enemy",
@@ -223,7 +223,7 @@ const cards: Array<AcesCard> = [
         type: "Brawler",
         sequence: 6,
         movePhase: {
-            first: "If first: JUMP to most enemies in LOS, and woods/cover from most enemies",
+            first: "JUMP to most enemies in LOS, and woods/cover from most enemies",
             moveActions: [
                 "1. GROUND to most enemies in LOS",
                 "2. GROUND into woods/cover from most enemies",
@@ -266,7 +266,7 @@ const cards: Array<AcesCard> = [
         type: "Brawler",
         sequence: 7,
         movePhase: {
-            first: "If first: JUMP to most enemies in LOS, and woods/cover from most enemies",
+            first: "JUMP to most enemies in LOS, and woods/cover from most enemies",
             moveActions: [
                 "1. PSPRINT If no enemies within 16” and at least 1 enemy in LOS with TMM 1 or less",
                 "2. GROUND into woods/cover from most enemies",
@@ -309,7 +309,7 @@ const cards: Array<AcesCard> = [
         type: "Brawler",
         sequence: 8,
         movePhase: {
-            first: "If first: JUMP to 12” from nearest enemy, and no enemies in LOS or woods/cover from most enemies.",
+            first: "JUMP to 12” from nearest enemy, and no enemies in LOS or woods/cover from most enemies.",
             moveActions: [
                 "1. STANDSTILL If no enemies within 16” and at least 1 enemy in LOS with TMM 1 or less",
                 "2. GROUND into woods/cover from most enemies",
@@ -344,7 +344,7 @@ const cards: Array<AcesCard> = [
         type: "Sniper",
         sequence: 1,
         movePhase: {
-            first: "If first: PSPRINT to 42” from all enemies, and fewest enemies in LOS (min.0)",
+            first: "PSPRINT to 42” from all enemies, and fewest enemies in LOS (min.0)",
             moveActions: [
                 "1. JUMP If any enemies within 12”: to 18” from all enemies",
                 "2. JUMP onto highest elevation",
@@ -388,7 +388,7 @@ const cards: Array<AcesCard> = [
         type: "Sniper",
         sequence: 2,
         movePhase: {
-            first: "If first: GROUND to 30” and LOS to most enemies, and woods/cover from most enemies",
+            first: "GROUND to 30” and LOS to most enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. JUMP If any enemies within 12”: to 18” from all enemies",
                 "2. JUMP onto highest elevation",
@@ -432,7 +432,7 @@ const cards: Array<AcesCard> = [
         type: "Sniper",
         sequence: 3,
         movePhase: {
-            first: "If first: GROUND to 24” and LOS to most enemies, and woods/cover from most enemies",
+            first: "GROUND to 24” and LOS to most enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. GROUND to 24” from nearest enemy",
                 "2. GROUND into woods/cover from most enemies",
@@ -476,7 +476,7 @@ const cards: Array<AcesCard> = [
         type: "Sniper",
         sequence: 4,
         movePhase: {
-            first: "If first: GROUND to 30” and LOS to most enemies, and woods/cover from most enemies",
+            first: "GROUND to 30” and LOS to most enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. GROUND into woods/cover from most enemies",
                 "2. GROUND to LOS to enemy with lowest health",
@@ -514,7 +514,7 @@ const cards: Array<AcesCard> = [
         type: "Sniper",
         sequence: 5,
         movePhase: {
-            first: "If first: JUMP to 24” and LOS to most enemies, and woods/cover from most enemies",
+            first: "JUMP to 24” and LOS to most enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. STANDSTILL If you have woods/cover from all enemies, and at least 1 enemy within LOS.",
                 "2. JUMP into woods/cover from most enemies",
@@ -553,7 +553,7 @@ const cards: Array<AcesCard> = [
         type: "Sniper",
         sequence: 6,
         movePhase: {
-            first: "If first: GROUND to 36” and LOS to most enemies, and woods/cover from most enemies",
+            first: "GROUND to 36” and LOS to most enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. STANDSTILL If no enemies within 12” and at least 1 enemy in LOS.",
                 "2. GROUND into LOS to enemy with lowest health",
@@ -592,7 +592,7 @@ const cards: Array<AcesCard> = [
         type: "Sniper",
         sequence: 7,
         movePhase: {
-            first: "If first: GROUND to 42” and LOS to most enemies, and woods/cover from most enemies",
+            first: "GROUND to 42” and LOS to most enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. STANDSTILL If no enemies within 18” and at least 1 enemy in LOS.",
                 "2. GROUND toward 18” from all enemies",
@@ -636,7 +636,7 @@ const cards: Array<AcesCard> = [
         type: "Sniper",
         sequence: 8,
         movePhase: {
-            first: "If first: GROUND to 30” and LOS to most enemies, and woods/cover from most enemies",
+            first: "GROUND to 30” and LOS to most enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. STANDSTILL If only 1 enemy in LOS",
                 "2. STANDSTILL If you have woods/cover from all enemies",
@@ -676,7 +676,7 @@ const cards: Array<AcesCard> = [
         type: "Skirmisher",
         sequence: 1,
         movePhase: {
-            first: "If first: JUMP to 12” from nearest enemy, and woods/cover from most enemies",
+            first: "JUMP to 12” from nearest enemy, and woods/cover from most enemies",
             moveActions: [
                 "1. JUMP  toward lowest TMM enemy",
                 "2. JUMP  toward biggest threat enemy",
@@ -719,7 +719,7 @@ const cards: Array<AcesCard> = [
         type: "Skirmisher",
         sequence: 2,
         movePhase: {
-            first: "If first: GROUND to 18” and LOS to nearest enemy, and woods/cover from most enemies",
+            first: "GROUND to 18” and LOS to nearest enemy, and woods/cover from most enemies",
             moveActions: [
                 "1. GROUND to 18” from nearest enemy",
                 "2. GROUND into woods/cover from most enemies",
@@ -758,7 +758,7 @@ const cards: Array<AcesCard> = [
         type: "Skirmisher",
         sequence: 3,
         movePhase: {
-            first: "If first: JUMP to most enemies in LOS, and woods/cover from most enemies",
+            first: "JUMP to most enemies in LOS, and woods/cover from most enemies",
             moveActions: [
                 "1. GROUND where most enemies in LOS",
                 "2. GROUND into woods/cover from most enemies",
@@ -796,7 +796,7 @@ const cards: Array<AcesCard> = [
         type: "Skirmisher",
         sequence: 4,
         movePhase: {
-            first: "If first: GROUND to most enemies in LOS, and woods/cover from most enemies",
+            first: "GROUND to most enemies in LOS, and woods/cover from most enemies",
             moveActions: [
                 "1. STANDSTILL If any enemies within 24” and LOS with TMM 1 or less",
                 "2. GROUND into woods/cover from most enemies",
@@ -830,7 +830,7 @@ const cards: Array<AcesCard> = [
         type: "Skirmisher",
         sequence: 5,
         movePhase: {
-            first: "If first: JUMP toward furthest enemy, and no other enemies LOS or woods/cover from most enemies",
+            first: "JUMP toward furthest enemy, and no other enemies LOS or woods/cover from most enemies",
             moveActions: [
                 "1. GROUND toward furthest enemy you can get behind",
                 "2. JUMP toward furthest enemy",
@@ -868,7 +868,7 @@ const cards: Array<AcesCard> = [
         type: "Skirmisher",
         sequence: 6,
         movePhase: {
-            first: "If first: JUMP toward furthest enemy, and no other enemies LOS or woods/cover from most enemies",
+            first: "JUMP toward furthest enemy, and no other enemies LOS or woods/cover from most enemies",
             moveActions: [
                 "1. GROUND toward furthest enemy you can get behind",
                 "2. JUMP toward furthest enemy",
@@ -906,7 +906,7 @@ const cards: Array<AcesCard> = [
         type: "Skirmisher",
         sequence: 7,
         movePhase: {
-            first: "If first: JUMP to 18” from nearest enemy, and no other enemies LOS or woods/cover from most enemies",
+            first: "JUMP to 18” from nearest enemy, and no other enemies LOS or woods/cover from most enemies",
             moveActions: [
                 "1. JUMP If the lowest health enemy has not yet moved, into woods/cover from most enemies",
                 "2. GROUND toward lowest health enemy",
@@ -951,7 +951,7 @@ const cards: Array<AcesCard> = [
         type: "Skirmisher",
         sequence: 8,
         movePhase: {
-            first: "If first: JUMP to 18” from all enemies, and woods/cover from most enemies",
+            first: "JUMP to 18” from all enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. JUMP If the highest MV enemy has not yet moved, into woods/cover from most enemies",
                 "2. GROUND toward highest MV enemy",
@@ -996,7 +996,7 @@ const cards: Array<AcesCard> = [
         type: "Striker",
         sequence: 1,
         movePhase: {
-            first: "If first: PSPRINT to 30” from all enemies, toward fewest enemies in LOS (min.0)",
+            first: "PSPRINT to 30” from all enemies, toward fewest enemies in LOS (min.0)",
             moveActions: [
                 "1. PSPRINT If no enemies within 24”, to where fewest enemies in LOS (min.0)",
                 "2. GROUND toward nearest enemy you can get behind",
@@ -1040,7 +1040,7 @@ const cards: Array<AcesCard> = [
         type: "Striker",
         sequence: 2,
         movePhase: {
-            first: "If first: JUMP to 24” from all enemies, and no LOS or most cover.",
+            first: "JUMP to 24” from all enemies, and no LOS or most cover.",
             moveActions: [
                 "1. PSPRINT If no enemies within 24”, to where fewest enemies in LOS (min.0)",
                 "2. JUMP toward furthest enemy you can get behind",
@@ -1079,7 +1079,7 @@ const cards: Array<AcesCard> = [
         type: "Striker",
         sequence: 3,
         movePhase: {
-            first: "If first: JUMP to 24” from all enemies, and no LOS or most cover.",
+            first: "JUMP to 24” from all enemies, and no LOS or most cover.",
             moveActions: [
                 "1. PSPRINT If no enemies within 24”, to where fewest enemies in LOS (min.0)",
                 "2. GROUND toward highest TMM enemy",
@@ -1123,7 +1123,7 @@ const cards: Array<AcesCard> = [
         type: "Striker",
         sequence: 4,
         movePhase: {
-            first: "If first: JUMP to 18” from all enemies, and no LOS or most cover.",
+            first: "JUMP to 18” from all enemies, and no LOS or most cover.",
             moveActions: [
                 "1. JUMP If the lowest health enemy has not yet moved, to where woods/cover from most enemies",
                 "2. GROUND toward highest health enemy you can destroy",
@@ -1168,7 +1168,7 @@ const cards: Array<AcesCard> = [
         type: "Striker",
         sequence: 5,
         movePhase: {
-            first: "If first: JUMP to 30” from all enemies, and no LOS or most cover.",
+            first: "JUMP to 30” from all enemies, and no LOS or most cover.",
             moveActions: [
                 "1. JUMP If the lowest health enemy has not yet moved, to where woods/cover from most enemies",
                 "2. GROUND toward lowest health enemy",
@@ -1213,7 +1213,7 @@ const cards: Array<AcesCard> = [
         type: "Striker",
         sequence: 6,
         movePhase: {
-            first: "If first: JUMP to 24” from all enemies, and fewest enemies in LOS (min.1) or most cover.",
+            first: "JUMP to 24” from all enemies, and fewest enemies in LOS (min.1) or most cover.",
             moveActions: [
                 "1. JUMP If the lowest health enemy has not yet moved, to where woods/cover from most enemies",
                 "2. GROUND toward lowest health enemy",
@@ -1258,7 +1258,7 @@ const cards: Array<AcesCard> = [
         type: "Striker",
         sequence: 7,
         movePhase: {
-            first: "If first: JUMP to 18” from all enemies, and woods/cover from most enemies",
+            first: "JUMP to 18” from all enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. JUMP If the highest MV enemy has not yet moved, to where woods/cover from most enemies",
                 "2. GROUND toward highest MV enemy",
@@ -1297,7 +1297,7 @@ const cards: Array<AcesCard> = [
         type: "Striker",
         sequence: 8,
         movePhase: {
-            first: "If first: JUMP to 18” from all enemies, and woods/cover from most enemies",
+            first: "JUMP to 18” from all enemies, and woods/cover from most enemies",
             moveActions: [
                 "1. JUMP If the highest MV enemy has not yet moved, to where woods/cover from most enemies",
                 "2. GROUND toward highest MV enemy",

@@ -1,6 +1,12 @@
 .first {
     border: 2px solid black;
     padding: 4px;
+    display: flex;
+    justify-content: flex-start;
+}
+.first-header {
+    font-weight: bold;
+    margin-bottom: 0px;
 }
 .jump-icon,
 .ground-icon,
@@ -22,16 +28,19 @@
 .jump-icon {
   background-color: red;
   color: white;
+  border: 1px solid black;
 }
 
 .ground-icon {
-  background-color: green;
-  color: white;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
 
 .sprint-icon {
   background-color: yellow;
   color: black;
+  border: 1px solid black;
 }
 .stand-icon {
     background-color: black;
@@ -162,6 +171,7 @@
     color: white;
     border: 1px solid black;
     align-items: center;
+    margin-left: 5px;
 }
   
 .centerText {
