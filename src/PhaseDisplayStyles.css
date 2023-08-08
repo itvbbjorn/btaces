@@ -183,3 +183,13 @@
     line-height: 0.9;
   }
 
+  .overlay {
+    border-radius: 10px;
+    background-color: rgba(184, 184, 184, 0.7); /* Light blue with 50% opacity */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1; /* Adjust as needed to be above other content */
+}

@@ -1,6 +1,6 @@
 .combat-phase-display {
     border-radius: 5px;
-    background-color: lightgrey;
+    background-color: rgb(243, 236, 222);
     padding-top: 10px;
     padding-bottom: 10px;
   }
@@ -43,6 +43,12 @@
   }
   
   .navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+    margin-top: 20px;
+  }
+  .util-buttons {
     display: flex;
     justify-content: space-between;
     width: 98%;

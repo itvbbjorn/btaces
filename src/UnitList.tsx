@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DetailsList, Selection, PrimaryButton, SelectionMode, Stack, DefaultButton } from '@fluentui/react';
+import { DetailsList, Selection, PrimaryButton, SelectionMode, Stack, DefaultButton, Icon } from '@fluentui/react';
 import AddUnit from './AddUnit';
 import cards, { AcesCard } from './cards';
 import UnitPanel from './UnitPanel';
@@ -81,17 +81,25 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   const handleDrawCard = (unit: Unit) => {
     const drawnCard = drawCard(unit.Type);
     if (drawnCard) {
-      const updatedUnit = { ...unit, Initiative: drawnCard.id };
+      const updatedUnit = { ...unit,
+          Initiative: drawnCard.id,
+          moveDone: false,
+          combatDone: false 
+      };
       setUnits(units.map(u => u === unit ? updatedUnit : u));
       setSelectedUnit(updatedUnit);
-      console.log("drew card")
     }
   };
   const handleRandomizeAllCards = () => {
     const updatedUnits = units.map(unit => {
       const drawnCard = drawCard(unit.Type);
       if (drawnCard) {
-        return { ...unit, Initiative: drawnCard.id };
+        return { 
+          ...unit, 
+          Initiative: drawnCard.id ,
+          moveDone: false,
+          combatDone: false
+        };
       }
       return unit; // return unit unchanged if no card drawn
     });
@@ -99,6 +107,9 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
     setUnits(updatedUnits);
   };
   
+  const updateUnit = (unit: Unit) => {
+    setUnits(units.map(u => u === selectedUnit ? unit : u));
+  };
 
   const [selectedItem, setSelectedItem] = useState<Unit | undefined>();
 
@@ -115,12 +126,12 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   }, [selectedItem]);
 
   const columns = [
-    { key: 'Name', name: 'Name', fieldName: 'Name', minWidth: 50, maxWidth: 100 },
-    { key: 'Type', name: 'Type', fieldName: 'Type', minWidth: 50, maxWidth: 50 },
-    { key: 'Initiative', name: 'Initiative', fieldName: 'Initiative', minWidth: 20, maxWidth: 40 },
-    { key: 'moveDone', name: 'Move Done', fieldName: 'moveDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.moveDone ? 'Yes' : 'No' },
-    { key: 'combatDone', name: 'Combat Done', fieldName: 'combatDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.combatDone ? 'Yes' : 'No' },
-];
+      { key: 'Name', name: 'Name', fieldName: 'Name', minWidth: 50, maxWidth: 100 },
+      { key: 'Type', name: 'Type', fieldName: 'Type', minWidth: 50, maxWidth: 50 },
+      { key: 'Initiative', name: 'Initiative', fieldName: 'Initiative', minWidth: 20, maxWidth: 40 },
+      { key: 'moveDone', name: 'Move Done', fieldName: 'moveDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.moveDone ? <Icon iconName="CheckMark" /> : '-' },
+      { key: 'combatDone', name: 'Combat Done', fieldName: 'combatDone', minWidth: 20, maxWidth: 40, onRender: (item: Unit) => item.combatDone ? <Icon iconName="CheckMark" /> : '-' },
+  ];
 
   
   
@@ -165,6 +176,7 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
       handleDrawCard={handleDrawCard} 
       getAssignedCard={getAssignedCard}
       handleDeleteUnit={handleDeleteUnit}
+      updateUnit={updateUnit}
     />
   </div>
   );
