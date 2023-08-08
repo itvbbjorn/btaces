@@ -144,7 +144,7 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
       />
     ) : (
       <Stack horizontal>
-        <PrimaryButton styles={{root: {marginRight: 8, marginTop: 10}}} onClick={handleRandomizeAllCards}>Draw cards</PrimaryButton>
+        <PrimaryButton styles={{root: {marginLeft: 8, marginRight: 8, marginTop: 10}}} onClick={handleRandomizeAllCards}>Draw cards</PrimaryButton>
         <DefaultButton styles={{root: {marginRight: 8, marginTop: 10}}} onClick={handleShowAddUnitRow}>Add unit</DefaultButton>
       </Stack>
     )}

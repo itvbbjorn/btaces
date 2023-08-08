@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Dropdown, PrimaryButton, IDropdownOption, Stack, DefaultButton } from '@fluentui/react';
 import { Unit } from './UnitList';
-import './AddUnit.css'
+import './AddUnitStyles.css'
 
 interface AddUnitRowProps {
   onSave: (unit: Unit) => void;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AcesCard } from './cards';
-import { Stack, Text, List } from '@fluentui/react';
-import './PhaseDisplay.css';
+import { Stack, List } from '@fluentui/react';
+import './PhaseDisplayStyles.css';
 
 interface MovePhaseDisplayProps {
   card: AcesCard | null;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AcesCard } from './cards';
-import { Stack, Text, List, StackItem } from '@fluentui/react';
-import './PhaseDisplay.css';
+import { Stack, Text} from '@fluentui/react';
+import './PhaseDisplayStyles.css';
 
 interface CombatPhaseDisplayProps {
   card: AcesCard | null;

@@ -1,12 +1,14 @@
 .first {
     border: 2px solid black;
-    padding: 4px;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 0px;
     display: flex;
     justify-content: flex-start;
 }
 .first-header {
     font-weight: bold;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
 }
 .jump-icon,
 .ground-icon,
@@ -176,7 +178,7 @@
   
 .centerText {
     text-align: center; 
-    font-size: 10px;    
+    font-size: 12px;    
     font-weight: bold;  
     line-height: 0.9;
   }
