@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { DefaultButton, Panel, PanelType, PrimaryButton, Stack, Dialog, DialogType} from '@fluentui/react';
 import { AcesCard } from './cards';
 import { Unit } from './UnitList';
@@ -21,7 +21,7 @@ interface UnitPanelProps {
     getAssignedCard: (assignedCardId: string) => AcesCard | undefined;
     handleDeleteUnit: (unit: Unit) => void;
   }
-
+  
 
   const UnitPanel: React.FC<UnitPanelProps> = ({
         selectedUnit,
@@ -51,6 +51,13 @@ interface UnitPanelProps {
         [selectedUnit, onDismiss, handleDrawCard],
     );
     
+    // Draw a card if the selected unit doesn't have one yet.
+    useEffect(() => {
+        if (selectedUnit && !getAssignedCard(selectedUnit.Initiative)) {
+          handleDrawCard(selectedUnit);
+        }
+      }, [selectedUnit, getAssignedCard, handleDrawCard]);
+
     return (
         <Panel
         isOpen={isOpen}
@@ -95,7 +102,7 @@ interface UnitPanelProps {
                     styles: { main: { maxWidth: 450 } },
                 }}
             >
-                <PrimaryButton onClick={onDeleteConfirmation} text="Yes" />
+                <PrimaryButton styles={{ root: { marginRight: 8 } }} onClick={onDeleteConfirmation} text="Confirm" />
                 <DefaultButton onClick={() => setIsDeleteDialogVisible(false)} text="Cancel" />
             </Dialog>
         </Panel>
