@@ -5,7 +5,7 @@ import './AddUnit.css';
 interface Unit {
   Name: string;
   Type: string;
-  AssignedCard: string;
+  Initiative: string;
 }
 
 interface AddUnitProps {
@@ -24,7 +24,7 @@ const AddUnit: React.FC<AddUnitProps> = ({ onAddUnit }) => {
 
   const handleAdd = () => {
     if (name && type) {
-      onAddUnit({ Name: name, Type: type.text, AssignedCard: assignedCard });
+      onAddUnit({ Name: name, Type: type.text, Initiative: assignedCard });
       setName('');
       setType(undefined);
       setAssignedCard('');

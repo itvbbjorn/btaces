@@ -81,7 +81,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 1,
                     combatType: "Can Destroy",
-                    modifier: "Check",
+                    modifier: "check",
                 },
                 {
                     order: 2,
@@ -334,7 +334,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 2,
                     combatType: "Near",
-                    modifier: "Check",
+                    modifier: "check",
                 },
             ]
         }
@@ -368,7 +368,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 2,
                     combatType: "No Cover",
-                    modifier: "Check",
+                    modifier: "check",
                 },
                 {
                     order: 3,
@@ -378,7 +378,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 4,
                     combatType: "Near",
-                    modifier: "Check",
+                    modifier: "check",
                 },
             ]
         }
@@ -412,7 +412,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 2,
                     combatType: "No Cover",
-                    modifier: "Check",
+                    modifier: "check",
                 },
                 {
                     order: 3,
@@ -422,7 +422,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 4,
                     combatType: "Near",
-                    modifier: "Check",
+                    modifier: "check",
                 },
             ]
         }
@@ -456,7 +456,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 2,
                     combatType: "No Cover",
-                    modifier: "Check",
+                    modifier: "check",
                 },
                 {
                     order: 3,
@@ -466,7 +466,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 4,
                     combatType: "Near",
-                    modifier: "Check",
+                    modifier: "check",
                 },
             ]
         }
@@ -504,7 +504,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 3,
                     combatType: "Near",
-                    modifier: "Check",
+                    modifier: "check",
                 }
             ]
         }
@@ -543,7 +543,7 @@ const cards: Array<AcesCard> = [
                 {
                     order: 3,
                     combatType: "Near",
-                    modifier: "Check",
+                    modifier: "check",
                 }
             ]
         }

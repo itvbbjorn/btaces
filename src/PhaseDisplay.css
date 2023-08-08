@@ -2,16 +2,16 @@
     display: flex;
     justify-content: space-between;
     padding: 8px;
-  }
-  
-  .lightRow {
+}
+
+.lightRow {
     background-color: lightgrey;
-  }
-  .column {
+}
+.column {
     flex: 1;
     padding: 8px;
-  }
-  .blackBox {
+}
+.blackBox {
     border: 1px solid black;
     padding: 5px;
     background-color: black;
@@ -19,4 +19,99 @@
     align-items: center;
     color: white;
     border-radius: 5px;
+}
+.checkHexagon:before {
+    content: " ";
+    width: 0; height: 0;
+    border-bottom: 15px solid black;
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
+    position: absolute;
+    top: -15px;
+}
+
+.checkHexagon {
+    margin-top: 15px;
+    width: 52px;
+    height: 30px;
+    background-color: black;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* for a white checkmark */
+}
+
+.checkHexagon:after {
+    content: "";
+    width: 0;
+    position: absolute;
+    bottom: -15px;
+    border-top: 15px solid black;
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
+}
+.plusHexagon:before {
+    content: " ";
+    font-weight: bolder;
+    width: 0; height: 0;
+    text-align: center;
+    line-height: 15px;
+    border-bottom: 15px solid black;
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
+    position: absolute;
+    top: -15px;
+}
+
+.plusHexagon {
+    margin-top: 15px;
+    width: 52px;
+    height: 30px;
+    background-color: black;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* for a white checkmark */
+}
+
+
+
+.minusHexagon {
+    margin-top: 15px;
+    width: 52px;
+    height: 30px;
+    background-color: black;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* for a white checkmark */
+}
+
+.minusHexagon:after {
+    content: "";
+    width: 0;
+    position: absolute;
+    bottom: -15px;
+    border-top: 15px solid black;
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
   }
+  /* .minusHexagon .letter {
+    position: absolute;
+    font-weight: bolder;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px; 
+    text-align: center;
+    line-height: 15px; 
+    color: white;
+  } */
+  
+.centerText {
+    font-size: 10px;
+}
+

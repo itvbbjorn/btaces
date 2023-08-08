@@ -22,7 +22,7 @@ const AddUnitRow: React.FC<AddUnitRowProps> = ({ onSave }) => {
 
   const handleSave = () => {
     if (name && type) {
-      onSave({ Name: name, Type: type.text, AssignedCard: assignedCard });
+      onSave({ Name: name, Type: type.text, Initiative: assignedCard });
       setName('');
       setType(undefined);
       setAssignedCard('');
@@ -35,7 +35,7 @@ const AddUnitRow: React.FC<AddUnitRowProps> = ({ onSave }) => {
     <div className='listForm'>
     <Stack horizontal>
         <Stack.Item styles={{ root: { padding: 10 } }}>
-            <TextField placeholder="Name" value={name} onChange={(_, newValue) => setName(newValue || '')} />
+            <TextField placeholder="Unit name" value={name} onChange={(_, newValue) => setName(newValue || '')} />
         </Stack.Item>
         <Stack.Item styles={{ root: { padding: 10 } }}>
             <Dropdown placeholder="Select unit type" options={typeOptions} selectedKey={type?.key} onChange={(_, option) => setType(option)} />

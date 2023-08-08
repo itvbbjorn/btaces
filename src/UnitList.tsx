@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DetailsList, Selection, PrimaryButton, SelectionMode } from '@fluentui/react';
+import { DetailsList, Selection, PrimaryButton, SelectionMode, Stack } from '@fluentui/react';
 import AddUnit from './AddUnit';
 import cards, { AcesCard } from './cards';
 import UnitPanel from './UnitPanel';
@@ -8,7 +8,7 @@ import AddUnitRow from './AddUnitRow';
 export interface Unit {
   Name: string;
   Type: string;
-  AssignedCard: string;
+  Initiative: string;
 }
 
 interface UnitListProps {
@@ -56,6 +56,17 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
     return cards.find(card => card.id === assignedCardId);
   };
 
+  const sortedUnits = units
+  .map(unit => ({
+    unit,
+    assignedCard: getAssignedCard(unit.Initiative)
+  }))
+  .sort((a, b) => {
+    return (a.assignedCard?.id || '').localeCompare(b.assignedCard?.id || '');
+  })
+  .map(item => item.unit); // Extract just the sorted units
+
+
   const drawCard = (unitType: string): AcesCard | undefined => {
     const filteredCards = cards.filter(card => card.type === unitType);
     const randomIndex = Math.floor(Math.random() * filteredCards.length);
@@ -65,11 +76,24 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   const handleDrawCard = (unit: Unit) => {
     const drawnCard = drawCard(unit.Type);
     if (drawnCard) {
-      const updatedUnit = { ...unit, AssignedCard: drawnCard.id };
+      const updatedUnit = { ...unit, Initiative: drawnCard.id };
       setUnits(units.map(u => u === unit ? updatedUnit : u));
       setSelectedUnit(updatedUnit);
+      console.log("drew card")
     }
   };
+  const handleRandomizeAllCards = () => {
+    const updatedUnits = units.map(unit => {
+      const drawnCard = drawCard(unit.Type);
+      if (drawnCard) {
+        return { ...unit, Initiative: drawnCard.id };
+      }
+      return unit; // return unit unchanged if no card drawn
+    });
+  
+    setUnits(updatedUnits);
+  };
+  
 
   const [selectedItem, setSelectedItem] = useState<Unit | undefined>();
 
@@ -88,14 +112,14 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
   const columns = [
     { key: 'Name', name: 'Name', fieldName: 'Name', minWidth: 50, maxWidth: 100 },
     { key: 'Type', name: 'Type', fieldName: 'Type', minWidth: 50, maxWidth: 50 },
-    { key: 'AssignedCard', name: 'Assigned Card', fieldName: 'AssignedCard', minWidth: 20, maxWidth: 40 },
+    { key: 'Initiative', name: 'Initiative', fieldName: 'Initiative', minWidth: 20, maxWidth: 40 },
   ];
   
   return (
     <div>
       {showAddUnit && <AddUnit onAddUnit={handleAddUnit} />}
       <DetailsList
-        items={units}
+        items={sortedUnits}
         columns={columns}
         selectionMode={SelectionMode.none}
         onRenderRow={(props, defaultRender) => {
@@ -113,7 +137,11 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
     {showAddUnitRow ? (
       <AddUnitRow onSave={handleSaveNewUnit} />
     ) : (
-      <PrimaryButton onClick={handleShowAddUnitRow}>Add new</PrimaryButton>
+      <Stack horizontal>
+        <PrimaryButton onClick={handleShowAddUnitRow}>Add new</PrimaryButton>
+        <PrimaryButton onClick={handleRandomizeAllCards}>Randomize All Cards</PrimaryButton>
+      </Stack>
+      
     )}
 
     <UnitPanel 

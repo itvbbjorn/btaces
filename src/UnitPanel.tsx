@@ -4,12 +4,15 @@ import { AcesCard } from './cards';
 import { Unit } from './UnitList';
 import MovePhaseDisplay from './MovePhaseDisplay';
 import CombatPhaseDisplay from './CombatPhaseDisplay';
+import { initializeIcons } from "@fluentui/react/lib/Icons";
+
+initializeIcons();
 
 interface UnitPanelProps {
   selectedUnit: {
     Name: string;
     Type: string;
-    AssignedCard: string;
+    Initiative: string;
   } | null;
   isOpen: boolean;
   onDismiss: () => void;
@@ -19,6 +22,17 @@ interface UnitPanelProps {
 }
 
 const UnitPanel: React.FC<UnitPanelProps> = ({ selectedUnit, isOpen, onDismiss, handleDrawCard, getAssignedCard, handleDeleteUnit }) => {
+    const onRenderFooterContent = React.useCallback(
+        () => (
+          <div>
+            <PrimaryButton onClick={() => selectedUnit && handleDrawCard(selectedUnit)}>Draw card</PrimaryButton>
+            
+            <DefaultButton onClick={() => selectedUnit && handleDeleteUnit(selectedUnit)}>Delete</DefaultButton>
+          </div>
+        ),
+        [onDismiss],
+      );
+    
   return (
     <Panel
       isOpen={isOpen}
@@ -26,22 +40,15 @@ const UnitPanel: React.FC<UnitPanelProps> = ({ selectedUnit, isOpen, onDismiss, 
       type={PanelType.smallFixedFar}
       headerText="Unit Details"
       isLightDismiss
+      onRenderFooterContent={onRenderFooterContent}
     >
       {selectedUnit && (
         <div>
             <p>Name: {selectedUnit.Name}</p>
             <p>Type: {selectedUnit.Type}</p>
             <p>Assigned Card:</p>
-            <MovePhaseDisplay card={getAssignedCard(selectedUnit.AssignedCard) || null} />
-            <CombatPhaseDisplay card={getAssignedCard(selectedUnit.AssignedCard) || null} />
-            <Stack horizontal>
-                <Stack.Item styles={{ root: { padding: 10 } }}>
-                    <PrimaryButton onClick={() => handleDrawCard(selectedUnit)}>Draw card</PrimaryButton>
-                </Stack.Item>
-                <Stack.Item styles={{ root: { padding: 10 } }}>
-                    <DefaultButton onClick={() => handleDeleteUnit(selectedUnit)}>Delete</DefaultButton>
-                </Stack.Item>
-            </Stack>
+            <MovePhaseDisplay card={getAssignedCard(selectedUnit.Initiative) || null} />
+            <CombatPhaseDisplay card={getAssignedCard(selectedUnit.Initiative) || null} />
         </div>
       )}
     </Panel>

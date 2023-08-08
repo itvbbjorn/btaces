@@ -3,7 +3,7 @@ import './App.css';
 import UnitList from './UnitList'; 
 
 function App() {
-  const [units, setUnits] = useState<Array<{ Name: string; Type: string; AssignedCard: string }>>([]);
+  const [units, setUnits] = useState<Array<{ Name: string; Type: string; Initiative: string }>>([]);
   
   return (
     <div className="App">
