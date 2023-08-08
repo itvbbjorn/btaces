@@ -83,34 +83,31 @@ const UnitPanel: React.FC<UnitPanelProps> = ({
         }
     };
 
-    const onRenderFooterContent = React.useCallback(
-        () => (
-            <Stack>
-                <div className='footer-content'>
-                    {selectedUnit && !selectedUnit.moveDone && (
-                        <PrimaryButton onClick={handleCompleteMove} text="Complete Move" />
-                    )}
-
-                    {selectedUnit && selectedUnit.moveDone && !selectedUnit.combatDone && (
-                        <PrimaryButton onClick={handleCompleteCombat} text="Complete Combat" />
-                    )}
-
-                    {selectedUnit && selectedUnit.moveDone && selectedUnit.combatDone && (
-                        <DefaultButton disabled text='Turn Complete' />
-                    )}
-                    <div className='util-buttons'>
-                        <DefaultButton styles={{ root: { marginRight: 8 } }} onClick={() => selectedUnit && handleDrawCard(selectedUnit)}>New card</DefaultButton>
-                        <DefaultButton styles={{ root: { marginRight: 8 } }} onClick={onDismiss}>Close</DefaultButton>
-                        <DefaultButton styles={{ root: { backgroundColor: "red", color: "white" } }} onClick={() => setIsDeleteDialogVisible(true)}>Delete</DefaultButton>
-                    </div>
-                    <div className='navigation-buttons'>
-                        <DefaultButton onClick={handlePreviousUnit} disabled={units.length < 2 || isPrevDisabled}><Icon iconName="ChevronLeft" /></DefaultButton>
-                        <DefaultButton onClick={handleNextUnit} disabled={units.length < 2 || isNextDisabled}><Icon iconName="ChevronRight" /></DefaultButton>
-                    </div>
+    const onRenderFooterContent = () => (
+        <Stack>
+            <div className='footer-content'>
+                {selectedUnit && !selectedUnit.moveDone && (
+                    <PrimaryButton onClick={handleCompleteMove} text="Complete Move" />
+                )}
+    
+                {selectedUnit && selectedUnit.moveDone && !selectedUnit.combatDone && (
+                    <PrimaryButton onClick={handleCompleteCombat} text="Complete Combat" />
+                )}
+    
+                {selectedUnit && selectedUnit.moveDone && selectedUnit.combatDone && (
+                    <DefaultButton disabled text='Turn Complete' />
+                )}
+                <div className='util-buttons'>
+                    <DefaultButton styles={{ root: { marginRight: 8 } }} onClick={() => selectedUnit && handleDrawCard(selectedUnit)}>New card</DefaultButton>
+                    <DefaultButton styles={{ root: { marginRight: 8 } }} onClick={onDismiss}>Close</DefaultButton>
+                    <DefaultButton styles={{ root: { backgroundColor: "red", color: "white" } }} onClick={() => setIsDeleteDialogVisible(true)}>Delete</DefaultButton>
                 </div>
-            </Stack>
-        ),
-        [selectedUnit, onDismiss, handleDrawCard, isNextDisabled, handlePreviousUnit, handleNextUnit],
+                <div className='navigation-buttons'>
+                    <DefaultButton onClick={handlePreviousUnit} disabled={units.length < 2 || isPrevDisabled}><Icon iconName="ChevronLeft" /></DefaultButton>
+                    <DefaultButton onClick={handleNextUnit} disabled={units.length < 2 || isNextDisabled}><Icon iconName="ChevronRight" /></DefaultButton>
+                </div>
+            </div>
+        </Stack>
     );
 
     // Draw a card if the selected unit doesn't have one yet.
