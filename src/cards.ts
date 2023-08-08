@@ -1,4 +1,4 @@
-export interface AcesCard{
+export interface AcesCard {
     id: string;
     type: string;
     sequence: number;
