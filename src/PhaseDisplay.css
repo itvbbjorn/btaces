@@ -1,3 +1,8 @@
+.first {
+    border: 2px solid black;
+    padding: 4px;
+}
+
 .row {
     display: flex;
     justify-content: space-between;
@@ -20,6 +25,11 @@
     color: white;
     border-radius: 5px;
 }
+
+.hexContainer {
+    padding-top: 8px;
+}
+
 .checkHexagon:before {
     content: " ";
     width: 0; height: 0;
@@ -99,19 +109,26 @@
     border-left: 26px solid transparent;
     border-right: 26px solid transparent;
   }
-  /* .minusHexagon .letter {
-    position: absolute;
-    font-weight: bolder;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 10px; 
-    text-align: center;
-    line-height: 15px; 
+  
+.combat-phase-text {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+.instruction-text {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: red;
     color: white;
-  } */
+    border: 1px solid black;
+    align-items: center;
+}
   
 .centerText {
-    font-size: 10px;
-}
+    text-align: center; 
+    font-size: 10px;    
+    font-weight: bold;  
+    line-height: 0.9;
+  }
 

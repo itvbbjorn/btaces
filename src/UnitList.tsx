@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DetailsList, Selection, PrimaryButton, SelectionMode, Stack } from '@fluentui/react';
+import { DetailsList, Selection, PrimaryButton, SelectionMode, Stack, DefaultButton } from '@fluentui/react';
 import AddUnit from './AddUnit';
 import cards, { AcesCard } from './cards';
 import UnitPanel from './UnitPanel';
@@ -32,6 +32,9 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
     setShowAddUnitRow(true); // Show the AddUnitRow when requested
   };
   
+  const handleHideAddUnitRow = () => {
+    setShowAddUnitRow(false); // Hide AddUnitRow
+  }
 
   const handleAddUnit = (unit: Unit) => {
     setUnits([...units, unit]);
@@ -135,15 +138,16 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
       />
       {/* Conditionally render the AddUnitRow component */}
     {showAddUnitRow ? (
-      <AddUnitRow onSave={handleSaveNewUnit} />
+      <AddUnitRow 
+      onSave={handleSaveNewUnit} 
+      onCancel={handleHideAddUnitRow}
+      />
     ) : (
       <Stack horizontal>
-        <PrimaryButton onClick={handleShowAddUnitRow}>Add new</PrimaryButton>
-        <PrimaryButton onClick={handleRandomizeAllCards}>Randomize All Cards</PrimaryButton>
+        <PrimaryButton styles={{root: {marginRight: 8, marginTop: 10}}} onClick={handleRandomizeAllCards}>Draw cards</PrimaryButton>
+        <DefaultButton styles={{root: {marginRight: 8, marginTop: 10}}} onClick={handleShowAddUnitRow}>Add unit</DefaultButton>
       </Stack>
-      
     )}
-
     <UnitPanel 
       selectedUnit={selectedUnit} 
       isOpen={showPanel} 

@@ -12,18 +12,10 @@ const MovePhaseDisplay: React.FC<MovePhaseDisplayProps> = ({ card }) => {
     <Stack tokens={{ childrenGap: 10 }}>
       {card && (
         <Stack>
-          <Text variant="large"><b>Movement Phase</b></Text>
-          <Stack horizontal tokens={{ childrenGap: 10 }}>
-            <Text variant="large">{card.type}</Text>
-            <Text variant="large">{card.sequence}/8</Text>
-            <div className='blackBox'>
-              {card.id}
+          <Stack tokens={{childrenGap: 20}}>
+            <div className='first'>
+              <Text>{card.movePhase.first}</Text>
             </div>
-          </Stack>
-          
-          <Stack>
-            
-            <Text>{card.movePhase.first}</Text>
             <List
               items={card.movePhase.moveActions}
               onRenderCell={(item, index) => {
