@@ -149,6 +149,9 @@ const UnitList: React.FC<UnitListProps> = ({ units, setUnits }) => {
       </Stack>
     )}
     <UnitPanel 
+      units={sortedUnits}
+      unitIndex={selectedUnit ? sortedUnits.indexOf(selectedUnit) : -1}
+      setSelectedUnit={setSelectedUnit}
       selectedUnit={selectedUnit} 
       isOpen={showPanel} 
       onDismiss={closePanel} 

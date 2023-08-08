@@ -59,7 +59,7 @@
 .lightRow {
     display: flex;
     justify-content: flex-start;
-    background-color: lightgrey;
+    background-color: rgb(243, 236, 222);
     padding: 8px;
 }
 .column {
