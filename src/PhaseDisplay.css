@@ -2,15 +2,54 @@
     border: 2px solid black;
     padding: 4px;
 }
+.jump-icon,
+.ground-icon,
+.stand-icon,
+.sprint-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.jump-icon {
+  background-color: red;
+  color: white;
+}
+
+.ground-icon {
+  background-color: green;
+  color: white;
+}
+
+.sprint-icon {
+  background-color: yellow;
+  color: black;
+}
+.stand-icon {
+    background-color: black;
+    color: white;
+}
+
 
 .row {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 8px;
 }
 
 .lightRow {
+    display: flex;
+    justify-content: flex-start;
     background-color: lightgrey;
+    padding: 8px;
 }
 .column {
     flex: 1;
